@@ -76,9 +76,20 @@ const menu = [
 const sectionCenter = document.querySelector(".section-center");
 // console.log(sectionCenter);
 
+const filterBtns = document.querySelectorAll(".filter-btn");
+// console.log(filterBtns);
+
 // check for the document to be loaded
 window.addEventListener("DOMContentLoaded", function () {
   displayMenuItems(menu);
+});
+
+// filter item
+filterBtns.forEach(function (btn) {
+  btn.addEventListener("click", function (e) {
+    // console.log(e.currentTarget.dataset.id);
+    const category = e.currentTarget.dataset.id;
+  });
 });
 
 function displayMenuItems(menuItems) {
