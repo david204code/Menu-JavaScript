@@ -72,3 +72,27 @@ const menu = [
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ];
+
+const sectionCenter = document.querySelector(".section-center");
+// console.log(sectionCenter);
+
+// check for the document to be loaded
+window.addEventListener("DOMContentLoaded", function () {
+  let displayMenu = menu.map(function (item) {
+    // console.log(item);
+    return `<article class="menu-item">
+    <img src=${item.img} class="photo" alt=${item.title} />
+    <div class="item-info">
+      <header>
+        <h4>${item.title}</h4>
+        <h4 class=${item.price}>$15</h4>
+      </header>
+      <p class="item-text">
+        ${item.desc}
+      </p>
+    </div>
+  </article>`;
+  });
+  displayMenu = displayMenu.join("");
+  console.log(displayMenu);
+});
