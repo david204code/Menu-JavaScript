@@ -87,6 +87,7 @@ const menu = [
 
 const sectionCenter = document.querySelector(".section-center");
 // console.log(sectionCenter);
+const container = document.querySelector(".btn-container");
 
 const filterBtns = document.querySelectorAll(".filter-btn");
 // console.log(filterBtns);
@@ -115,6 +116,8 @@ window.addEventListener("DOMContentLoaded", function () {
       return `<button class="filter-btn" type="button" data-id=${category}>${category}</button>`;
     })
     .join("");
+  // add the unique category to the selected HTML
+  container.innerHTML = categoryBtns;
   console.log(categoryBtns);
 });
 
