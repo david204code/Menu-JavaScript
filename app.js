@@ -92,7 +92,31 @@ const container = document.querySelector(".btn-container");
 // check for the document to be loaded
 window.addEventListener("DOMContentLoaded", function () {
   displayMenuItems(menu);
+  displayMenuButton();
+});
 
+function displayMenuItems(menuItems) {
+  let displayMenu = menuItems.map(function (item) {
+    // console.log(item);
+    return `<article class="menu-item">
+    <img src=${item.img} class="photo" alt=${item.title} />
+    <div class="item-info">
+      <header>
+        <h4>${item.title}</h4>
+        <h4 class="price">${item.price}</h4>
+      </header>
+      <p class="item-text">
+        ${item.desc}
+      </p>
+    </div>
+  </article>`;
+  });
+  displayMenu = displayMenu.join("");
+  // console.log(displayMenu);
+  sectionCenter.innerHTML = displayMenu;
+}
+
+function displayMenuButton() {
   // display the category's button dynamically, use map to return the unique category
   // const categories = menu.map(function (item) {
   //   return item.category;
@@ -141,25 +165,4 @@ window.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-});
-
-function displayMenuItems(menuItems) {
-  let displayMenu = menuItems.map(function (item) {
-    // console.log(item);
-    return `<article class="menu-item">
-    <img src=${item.img} class="photo" alt=${item.title} />
-    <div class="item-info">
-      <header>
-        <h4>${item.title}</h4>
-        <h4 class="price">${item.price}</h4>
-      </header>
-      <p class="item-text">
-        ${item.desc}
-      </p>
-    </div>
-  </article>`;
-  });
-  displayMenu = displayMenu.join("");
-  // console.log(displayMenu);
-  sectionCenter.innerHTML = displayMenu;
 }
