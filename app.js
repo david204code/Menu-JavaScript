@@ -81,6 +81,10 @@ const menu = [
   },
 ];
 
+// get only unique categories - HARDEST ONE
+// iterate over categories return buttons
+// make sure to select buttons when they are available
+
 const sectionCenter = document.querySelector(".section-center");
 // console.log(sectionCenter);
 
@@ -90,6 +94,28 @@ const filterBtns = document.querySelectorAll(".filter-btn");
 // check for the document to be loaded
 window.addEventListener("DOMContentLoaded", function () {
   displayMenuItems(menu);
+
+  // display the category's button dynamically, use map to return the unique category
+  // const categories = menu.map(function (item) {
+  //   return item.category;
+  // });
+  // get the  unique categories
+  const categories = menu.reduce(
+    function (values, item) {
+      if (!values.includes(item.category)) {
+        values.push(item.category);
+      }
+      return values;
+    },
+    ["all"]
+  );
+  // console.log(categories);
+  const categoryBtns = categories
+    .map(function (category) {
+      return `<button class="filter-btn" type="button" data-id=${category}>${category}</button>`;
+    })
+    .join("");
+  console.log(categoryBtns);
 });
 
 // filter item
