@@ -89,9 +89,6 @@ const sectionCenter = document.querySelector(".section-center");
 // console.log(sectionCenter);
 const container = document.querySelector(".btn-container");
 
-const filterBtns = document.querySelectorAll(".filter-btn");
-// console.log(filterBtns);
-
 // check for the document to be loaded
 window.addEventListener("DOMContentLoaded", function () {
   displayMenuItems(menu);
@@ -118,28 +115,31 @@ window.addEventListener("DOMContentLoaded", function () {
     .join("");
   // add the unique category to the selected HTML
   container.innerHTML = categoryBtns;
-  console.log(categoryBtns);
-});
+  // console.log(categoryBtns);
 
-// filter item
-filterBtns.forEach(function (btn) {
-  btn.addEventListener("click", function (e) {
-    // console.log(e.currentTarget.dataset.id);
-    const category = e.currentTarget.dataset.id;
-    const menuCategory = menu.filter(function (menuItem) {
-      // console.log(menuItem.category);
-      // return the menuItem if it matches to the category
-      if (menuItem.category === category) {
-        // console.log(menuItem);
-        return menuItem;
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  // console.log(filterBtns);
+
+  // filter item
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      // console.log(e.currentTarget.dataset.id);
+      const category = e.currentTarget.dataset.id;
+      const menuCategory = menu.filter(function (menuItem) {
+        // console.log(menuItem.category);
+        // return the menuItem if it matches to the category
+        if (menuItem.category === category) {
+          // console.log(menuItem);
+          return menuItem;
+        }
+      });
+      // console.log(menuCategory);
+      if (category === "all") {
+        displayMenuItems(menu);
+      } else {
+        displayMenuItems(menuCategory);
       }
     });
-    // console.log(menuCategory);
-    if (category === "all") {
-      displayMenuItems(menu);
-    } else {
-      displayMenuItems(menuCategory);
-    }
   });
 });
 
